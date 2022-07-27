@@ -3,17 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Api", "JGP.Members.Api\JGP.Members.Api.csproj", "{BE04ED6A-5317-4780-87F3-3F4132DD387B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Api", "JGP.Members.Api\JGP.Members.Api.csproj", "{BE04ED6A-5317-4780-87F3-3F4132DD387B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Core", "JGP.Members.Core\JGP.Members.Core.csproj", "{1D23F84C-6232-4BAF-B378-3747E4E3E919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Core", "JGP.Members.Core\JGP.Members.Core.csproj", "{1D23F84C-6232-4BAF-B378-3747E4E3E919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Data.EntityFramework", "JGP.Members.Data.EntityFramework\JGP.Members.Data.EntityFramework.csproj", "{5272DC43-9DF9-44ED-AE73-196B8279FDE0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Data.EntityFramework", "JGP.Members.Data.EntityFramework\JGP.Members.Data.EntityFramework.csproj", "{5272DC43-9DF9-44ED-AE73-196B8279FDE0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Services", "JGP.Members.Services\JGP.Members.Services.csproj", "{AF3A2FBD-5299-4A4B-900E-0BA39D3BDFFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Services", "JGP.Members.Services\JGP.Members.Services.csproj", "{AF3A2FBD-5299-4A4B-900E-0BA39D3BDFFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Web.Models", "JGP.Members.Web.Models\JGP.Members.Web.Models.csproj", "{74A87FA1-0187-44E1-ABD9-04B79C284CFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Web.Models", "JGP.Members.Web.Models\JGP.Members.Web.Models.csproj", "{74A87FA1-0187-44E1-ABD9-04B79C284CFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JGP.Members.Web.Proxy", "JGP.Members.Web.Proxy\JGP.Members.Web.Proxy.csproj", "{50838C0C-3695-4686-BC24-9947355071C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JGP.Members.Web.Proxy", "JGP.Members.Web.Proxy\JGP.Members.Web.Proxy.csproj", "{50838C0C-3695-4686-BC24-9947355071C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26186F5D-4659-46AD-9B09-185EA4B6E00E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
