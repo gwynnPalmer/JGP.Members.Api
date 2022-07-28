@@ -2,25 +2,10 @@
 {
     using System.Security.Claims;
     using Core;
-    using JGP.Members.Core.Security;
-    using JGP.Members.Data.EntityFramework;
+    using Core.Security;
+    using Data.EntityFramework;
     using Microsoft.EntityFrameworkCore;
     using Security;
-
-    /// <summary>
-    ///     Interface IAuthenticationService
-    ///     Implements the <see cref="IDisposable" />
-    /// </summary>
-    /// <seealso cref="IDisposable" />
-    public interface IAuthenticationService : IDisposable
-    {
-        /// <summary>
-        ///     Authenticate as an asynchronous operation.
-        /// </summary>
-        /// <param name="command">The command.</param>
-        /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
-        Task<AuthenticationResult> AuthenticateAsync(LoginCommand command);
-    }
 
     /// <summary>
     ///     Class AuthenticationService.
@@ -40,7 +25,7 @@
         private readonly IPasswordService _passwordService;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AuthenticationService"/> class.
+        ///     Initializes a new instance of the <see cref="AuthenticationService" /> class.
         /// </summary>
         /// <param name="memberContext">The member context.</param>
         /// <param name="passwordService">The password service.</param>
@@ -104,7 +89,7 @@
         /// <param name="member">The member.</param>
         private static void AddClaims(AuthenticationResult authenticationResult, Member member)
         {
-            authenticationResult.Claims = new List<MemberAuthenticationClaim>()
+            authenticationResult.Claims = new List<MemberAuthenticationClaim>
             {
                 new(ClaimTypes.Role, "Member"),
                 new(ClaimTypes.Name, $"{member.FirstName} {member.LastName}"),

@@ -2,10 +2,9 @@
 {
     public interface IIdentityApiHelper
     {
-
     }
+
     public class IdentityApiHelper
     {
-
     }
 }

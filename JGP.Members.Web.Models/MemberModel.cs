@@ -1,7 +1,7 @@
 ﻿namespace JGP.Members.Web.Models
 {
     using Core;
-    using JGP.Members.Core.Commands;
+    using Core.Commands;
 
     /// <summary>
     ///     Class MemberModel.

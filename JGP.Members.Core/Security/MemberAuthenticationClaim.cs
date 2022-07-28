@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JGP.Members.Core.Security
+﻿namespace JGP.Members.Core.Security
 {
     using System.Security.Claims;
 
@@ -52,4 +46,5 @@ namespace JGP.Members.Core.Security
         /// </summary>
         /// <value>The claim value.</value>
         public string ClaimValue { get; set; }
+    }
 }

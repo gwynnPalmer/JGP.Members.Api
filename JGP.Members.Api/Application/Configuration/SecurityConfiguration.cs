@@ -1,6 +1,6 @@
 ﻿namespace JGP.Members.Api.Application.Configuration
 {
-    internal static  class SecurityConfiguration
+    internal static class SecurityConfiguration
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {

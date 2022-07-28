@@ -256,6 +256,7 @@ namespace JGP.Members.Services
                 return null;
             }
         }
+
         /// <summary>
         ///     Update member as an asynchronous operation.
         /// </summary>

@@ -1,8 +1,8 @@
 ﻿namespace JGP.Members.Core
 {
-    using JGP.Members.Core.Commands;
     using System.Text.Json;
     using System.Text.Json.Serialization;
+    using Commands;
 
     /// <summary>
     ///     Class Member.
@@ -29,7 +29,7 @@
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Member"/> class.
+        ///     Initializes a new instance of the <see cref="Member" /> class.
         /// </summary>
         /// <param name="registrationCommand">The registration command.</param>
         /// <exception cref="System.ArgumentNullException">registrationCommand</exception>
@@ -48,7 +48,7 @@
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Member"/> class.
+        ///     Initializes a new instance of the <see cref="Member" /> class.
         /// </summary>
         protected Member()
         {
@@ -175,6 +175,7 @@
             FirstName = command.FirstName;
             LastName = command.LastName;
         }
+
         #endregion
 
         #region OVERRIDES & ESSENTIALS

@@ -22,4 +22,5 @@
         /// </summary>
         /// <value><c>true</c> if [remember me]; otherwise, <c>false</c>.</value>
         public bool RememberMe { get; set; }
+    }
 }

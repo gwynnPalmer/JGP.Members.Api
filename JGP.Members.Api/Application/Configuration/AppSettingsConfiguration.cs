@@ -1,6 +1,6 @@
 ﻿namespace JGP.Members.Api.Application.Configuration
 {
-    using JGP.Members.Core.Configuration;
+    using Core.Configuration;
 
     /// <summary>
     ///     Class AppSettingsConfiguration.

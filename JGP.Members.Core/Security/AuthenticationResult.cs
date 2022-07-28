@@ -1,5 +1,4 @@
-﻿
-namespace JGP.Members.Core.Security
+﻿namespace JGP.Members.Core.Security
 {
     using System.Text.Json.Serialization;
 
@@ -30,11 +29,11 @@ namespace JGP.Members.Core.Security
         public string FirstName { get; set; }
 
         /// <summary>
-        ///     Gets or sets a value indicating whether this instance is success.
+        ///     Gets or sets a value indicating whether this instance is authenticated.
         /// </summary>
-        /// <value><c>true</c> if this instance is success; otherwise, <c>false</c>.</value>
+        /// <value><c>true</c> if this instance is authenticated; otherwise, <c>false</c>.</value>
         [JsonPropertyName("isSuccess")]
-        public bool IsSuccess { get; set; }
+        public bool IsAuthenticated { get; set; }
 
         /// <summary>
         ///     Gets or sets the last name.
@@ -65,7 +64,7 @@ namespace JGP.Members.Core.Security
         {
             return new AuthenticationResult
             {
-                IsSuccess = false
+                IsAuthenticated = false
             };
         }
 
@@ -81,7 +80,7 @@ namespace JGP.Members.Core.Security
 
             return new AuthenticationResult
             {
-                IsSuccess = true,
+                IsAuthenticated = true,
                 MemberId = member.Id,
                 EmailAddress = member.EmailAddress,
                 FirstName = member.FirstName,

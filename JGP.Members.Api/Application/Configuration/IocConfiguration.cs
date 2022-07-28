@@ -1,9 +1,9 @@
 ﻿namespace JGP.Members.Api.Application.Configuration
 {
-    using JGP.Members.Data.EntityFramework;
-    using JGP.Members.Services;
-    using JGP.Security;
+    using Data.EntityFramework;
     using Microsoft.EntityFrameworkCore;
+    using Security;
+    using Services;
 
     internal static class IocConfiguration
     {
@@ -21,14 +21,15 @@
             LoggingConfiguration.Configure(services, configuration, appSettings);
 
             //
-            services.AddTransient(provider => provider.GetService<HttpContext>()?.User);
+            //services.AddTransient(provider => provider.GetService<HttpContext>()?.User);
 
             // Context.
             var connectionString = configuration.GetConnectionString("IdentityContext");
             services.AddDbContext<MemberContext>(options => options.UseSqlServer(connectionString,
-                optionsBuilder => optionsBuilder.EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null)));
+                optionsBuilder => optionsBuilder.UseNetTopologySuite().EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null)));
 
             // Services.
+            services.AddTransient<IMemberContext, MemberContext>();
             services.AddTransient<IPasswordService, PasswordService>();
             services.AddTransient<IMemberService, MemberService>();
             services.AddTransient<IAuthenticationService, AuthenticationService>();

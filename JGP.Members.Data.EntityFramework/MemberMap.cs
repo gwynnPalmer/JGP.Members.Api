@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 /// <summary>
-/// Class MemberMap.
-/// Implements the <see cref="Member" />
+///     Class MemberMap.
+///     Implements the <see cref="Member" />
 /// </summary>
 /// <seealso cref="Member" />
 internal class MemberMap : IEntityTypeConfiguration<Member>
 {
     /// <summary>
-    /// Configures the entity of type <typeparamref name="TEntity" />.
+    ///     Configures the entity of type <typeparamref name="TEntity" />.
     /// </summary>
     /// <param name="builder">The builder to be used to configure the entity type.</param>
     public void Configure(EntityTypeBuilder<Member> builder)
