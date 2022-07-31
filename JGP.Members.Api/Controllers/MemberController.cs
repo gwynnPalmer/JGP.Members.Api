@@ -164,5 +164,20 @@ namespace JGP.Members.Api.Controllers
             var model = new MemberModel(member);
             return new OkObjectResult(model);
         }
+
+        /// <summary>
+        ///     Update member as an asynchronous operation.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>A Task&lt;IActionResult&gt; representing the asynchronous operation.</returns>
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [HttpPut("update")]
+        public async Task<IActionResult> UpdateMemberAsync([Required] MemberModel model)
+        {
+            var receipt = await _memberService.UpdateMemberAsync(model.GetUpdateCommand());
+            return receipt.ToActionResult();
+        }
     }
 }

@@ -20,6 +20,7 @@ namespace JGP.Members.Web.Proxy
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Api.KeyManagement.Authentication;
+    using Core.Security;
     using JGP.Core.Services;
     using JGP.Core.Services.Extensions.Web;
     using Microsoft.Extensions.Logging;
@@ -116,8 +117,8 @@ namespace JGP.Members.Web.Proxy
         ///     Authenticate as an asynchronous operation.
         /// </summary>
         /// <param name="model">The model.</param>
-        /// <returns>A Task&lt;AuthenticationResultModel&gt; representing the asynchronous operation.</returns>
-        public async Task<AuthenticationResultModel?> AuthenticateAsync(LoginModel model)
+        /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
+        public async Task<AuthenticationResult?> AuthenticateAsync(LoginModel model)
         {
             var response = await SendPostMessageAsync(model, $"{AuthenticationPath}/authenticate");
             if (!response.IsSuccessStatusCode)
@@ -125,7 +126,7 @@ namespace JGP.Members.Web.Proxy
                 return null;
             }
 
-            return await response.Content.ReadFromJsonAsync<AuthenticationResultModel>(JsonOptions);
+            return await response.Content.ReadFromJsonAsync<AuthenticationResult>(JsonOptions);
         }
 
         #endregion
@@ -234,6 +235,17 @@ namespace JGP.Members.Web.Proxy
             }
 
             return await response.Content.ReadFromJsonAsync<MemberModel>(JsonOptions);
+        }
+
+        /// <summary>
+        ///     Update member as an asynchronous operation.
+        /// </summary>
+        /// <param name="model">The model.</param>
+        /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
+        public async Task<ActionReceipt?> UpdateMemberAsync(MemberModel model)
+        {
+            var response = await SendPutMessageAsync(model, $"{MemberPath}/update");
+            return await response.ToActionReceiptAsync();
         }
 
         #endregion

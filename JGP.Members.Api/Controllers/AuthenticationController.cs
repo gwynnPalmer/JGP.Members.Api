@@ -15,6 +15,7 @@
 namespace JGP.Members.Api.Controllers;
 
 using System.ComponentModel.DataAnnotations;
+using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -54,7 +55,7 @@ public class AuthenticationController : ControllerBase
     /// </summary>
     /// <param name="model">The model.</param>
     /// <returns>IActionResult.</returns>
-    [ProducesResponseType(typeof(AuthenticationResultModel), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(AuthenticationResult), StatusCodes.Status200OK)]
     [HttpPost("authenticate")]
     public async Task<IActionResult> Authenticate([Required] LoginModel model)
     {
@@ -62,7 +63,6 @@ public class AuthenticationController : ControllerBase
 
         var result = await _authenticationService.AuthenticateAsync(model.GetLoginCommand());
 
-        var resultModel = new AuthenticationResultModel(result);
-        return new OkObjectResult(resultModel);
+        return new OkObjectResult(result);
     }
 }

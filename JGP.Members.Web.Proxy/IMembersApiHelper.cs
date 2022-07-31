@@ -14,6 +14,7 @@
 
 namespace JGP.Members.Web.Proxy;
 
+using Core.Security;
 using JGP.Core.Services;
 using Models;
 using Security;
@@ -24,11 +25,11 @@ using Security;
 public interface IMembersApiHelper
 {
     /// <summary>
-    ///     Authenticate as an asynchronous operation.
+    ///     Authenticates the asynchronous.
     /// </summary>
     /// <param name="model">The model.</param>
-    /// <returns>A Task&lt;AuthenticationResultModel&gt; representing the asynchronous operation.</returns>
-    Task<AuthenticationResultModel?> AuthenticateAsync(LoginModel model);
+    /// <returns>Task&lt;System.Nullable&lt;AuthenticationResult&gt;&gt;.</returns>
+    Task<AuthenticationResult?> AuthenticateAsync(LoginModel model);
 
     /// <summary>
     ///     Register member as an asynchronous operation.
@@ -86,6 +87,13 @@ public interface IMembersApiHelper
     /// <param name="memberId">The member identifier.</param>
     /// <returns>A Task&lt;MemberModel&gt; representing the asynchronous operation.</returns>
     Task<MemberModel?> GetMemberAsync(Guid memberId);
+
+    /// <summary>
+    ///     Update member as an asynchronous operation.
+    /// </summary>
+    /// <param name="model">The model.</param>
+    /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
+    Task<ActionReceipt?> UpdateMemberAsync(MemberModel model);
 
     /// <summary>
     ///     Hash password as an asynchronous operation.
