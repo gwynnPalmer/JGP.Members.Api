@@ -84,7 +84,7 @@ namespace JGP.Members.Services
                 if (member == null) return ActionReceipt.GetNotFoundReceipt();
 
                 var result = _passwordService.Verify(currentPassword, member.PasswordHash);
-                if (!result) return ActionReceipt.GetErrorReceipt("Password verification failed");
+                if (result.Outcome != VerificationOutcome.Success) return ActionReceipt.GetErrorReceipt("Password verification failed: " + result.Message);
 
                 var newHash = _passwordService.Hash(newPassword);
                 member.SetPasswordHash(newHash);

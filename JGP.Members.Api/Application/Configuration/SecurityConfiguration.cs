@@ -1,10 +1,45 @@
-﻿namespace JGP.Members.Api.Application.Configuration
+﻿// ***********************************************************************
+// Assembly         : JGP.Members.Api
+// Author           : Joshua Gwynn-Palmer
+// Created          : 07-26-2022
+//
+// Last Modified By : Joshua Gwynn-Palmer
+// Last Modified On : 07-30-2022
+// ***********************************************************************
+// <copyright file="SecurityConfiguration.cs" company="JGP.Members.Api">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace JGP.Members.Api.Application.Configuration
 {
+    using JGP.Api.KeyManagement.Authentication;
+
+    /// <summary>
+    ///     Class SecurityConfiguration.
+    /// </summary>
     internal static class SecurityConfiguration
     {
+        /// <summary>
+        ///     Configures the specified services.
+        /// </summary>
+        /// <param name="services">The services.</param>
+        /// <param name="configuration">The configuration.</param>
+        /// <exception cref="System.InvalidOperationException">No {nameof(ApiKeyAuthenticationSettings)} found</exception>
         public static void Configure(IServiceCollection services, IConfiguration configuration)
         {
-            //TODO: Implement JGP.ApiAuthentication
+            var settings = services.BuildServiceProvider().GetService<ApiKeyAuthenticationSettings>();
+            if (settings == null)
+            {
+                throw new InvalidOperationException($"No {nameof(ApiKeyAuthenticationSettings)} found");
+            }
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = ApiKeyAuthenticationSettings.DefaultScheme;
+                options.DefaultChallengeScheme = ApiKeyAuthenticationSettings.DefaultScheme;
+            }).AddApiKeyManagement(settings);
         }
     }
 }

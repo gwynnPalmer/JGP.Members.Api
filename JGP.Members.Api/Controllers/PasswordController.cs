@@ -47,20 +47,6 @@ public class PasswordController : ControllerBase
     }
 
     /// <summary>
-    ///     Verifies the specified hash.
-    /// </summary>
-    /// <param name="hash">The hash.</param>
-    /// <param name="password">The password.</param>
-    /// <returns>IActionResult.</returns>
-    [ProducesResponseType(typeof(bool), StatusCodes.Status200OK)]
-    [HttpGet("verify/{hash}/{password}")]
-    public IActionResult Verify(string hash, string password)
-    {
-        var result = _passwordService.Verify(hash, password);
-        return Ok(result);
-    }
-
-    /// <summary>
     ///     Hashes the specified password.
     /// </summary>
     /// <param name="password">The password.</param>
@@ -70,6 +56,20 @@ public class PasswordController : ControllerBase
     public IActionResult Hash(string password)
     {
         var result = _passwordService.Hash(password);
+        return Ok(result);
+    }
+
+    /// <summary>
+    ///     Verifies the specified hash.
+    /// </summary>
+    /// <param name="hash">The hash.</param>
+    /// <param name="password">The password.</param>
+    /// <returns>IActionResult.</returns>
+    [ProducesResponseType(typeof(VerificationResult), StatusCodes.Status200OK)]
+    [HttpGet("verify/{hash}/{password}")]
+    public IActionResult Verify(string hash, string password)
+    {
+        var result = _passwordService.Verify(password, hash);
         return Ok(result);
     }
 }

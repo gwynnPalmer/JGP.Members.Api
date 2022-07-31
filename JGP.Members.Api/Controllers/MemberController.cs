@@ -15,7 +15,7 @@
 namespace JGP.Members.Api.Controllers
 {
     using System.ComponentModel.DataAnnotations;
-    using JGP.Core.Web.ServiceExtensions;
+    using JGP.Core.Services.Extensions.Web;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services;

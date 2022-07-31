@@ -65,9 +65,9 @@
 
             var result = _passwordService.Verify(command.Password, member.PasswordHash);
 
-            switch (result)
+            switch (result.Outcome)
             {
-                case true:
+                case VerificationOutcome.Success:
                     member.RegisterSuccessfulLogin();
                     authenticationResult = AuthenticationResult.CreateSuccessResult(member);
                     break;

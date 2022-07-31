@@ -1,6 +1,7 @@
 ﻿namespace JGP.Members.Api.Application.Configuration
 {
     using Data.EntityFramework;
+    using JGP.Api.KeyManagement.Authentication;
     using Microsoft.EntityFrameworkCore;
     using Security;
     using Services;
@@ -27,6 +28,9 @@
             var connectionString = configuration.GetConnectionString("IdentityContext");
             services.AddDbContext<MemberContext>(options => options.UseSqlServer(connectionString,
                 optionsBuilder => optionsBuilder.UseNetTopologySuite().EnableRetryOnFailure(3, TimeSpan.FromSeconds(3), null)));
+
+            // Custom Api Key Middleware
+            services.AddApiKeyManagement(configuration);
 
             // Services.
             services.AddTransient<IMemberContext, MemberContext>();
