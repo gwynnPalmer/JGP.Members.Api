@@ -6,7 +6,7 @@
 // Last Modified By : Joshua Gwynn-Palmer
 // Last Modified On : 07-31-2022
 // ***********************************************************************
-// <copyright file="IdentityApiHelper.cs" company="JGP.Members.Web.Proxy">
+// <copyright file="MembersApiHelper.cs" company="JGP.Members.Web.Proxy">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -28,9 +28,9 @@ namespace JGP.Members.Web.Proxy
     using Security;
 
     /// <summary>
-    ///     Class IdentityApiHelper.
+    ///     Class MembersApiHelper.
     /// </summary>
-    public class IdentityApiHelper : IIdentityApiHelper
+    public class MembersApiHelper : IMembersApiHelper
     {
         /// <summary>
         ///     The authentication path
@@ -70,12 +70,12 @@ namespace JGP.Members.Web.Proxy
         /// <summary>
         ///     The logger
         /// </summary>
-        private readonly ILogger<IdentityApiHelper> _logger;
+        private readonly ILogger<MembersApiHelper> _logger;
 
         /// <summary>
-        ///     Initializes static members of the <see cref="IdentityApiHelper" /> class.
+        ///     Initializes static members of the <see cref="MembersApiHelper" /> class.
         /// </summary>
-        static IdentityApiHelper()
+        static MembersApiHelper()
         {
             JsonOptions = new JsonSerializerOptions();
             JsonOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
@@ -85,12 +85,12 @@ namespace JGP.Members.Web.Proxy
         }
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="IdentityApiHelper" /> class.
+        ///     Initializes a new instance of the <see cref="MembersApiHelper" /> class.
         /// </summary>
         /// <param name="logger">The logger.</param>
         /// <param name="apiOptions">The API options.</param>
         /// <exception cref="System.InvalidOperationException">No endpoint found for service {ServiceName}</exception>
-        public IdentityApiHelper(ILogger<IdentityApiHelper> logger, IOptions<ApiConfiguration> apiOptions)
+        public MembersApiHelper(ILogger<MembersApiHelper> logger, IOptions<ApiConfiguration> apiOptions)
         {
             _logger = logger;
 

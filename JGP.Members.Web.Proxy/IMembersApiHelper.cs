@@ -6,7 +6,7 @@
 // Last Modified By : Joshua Gwynn-Palmer
 // Last Modified On : 07-31-2022
 // ***********************************************************************
-// <copyright file="IIdentityApiHelper.cs" company="JGP.Members.Web.Proxy">
+// <copyright file="IMembersApiHelper.cs" company="JGP.Members.Web.Proxy">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -19,9 +19,9 @@ using Models;
 using Security;
 
 /// <summary>
-///     Interface IIdentityApiHelper
+///     Interface IMembersApiHelper
 /// </summary>
-public interface IIdentityApiHelper
+public interface IMembersApiHelper
 {
     /// <summary>
     ///     Authenticate as an asynchronous operation.
