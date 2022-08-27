@@ -22,7 +22,6 @@ namespace JGP.Members.Web.Proxy
     using Api.KeyManagement.Authentication;
     using Core.Security;
     using JGP.Core.Services;
-    using JGP.Core.Services.Extensions.Web;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
     using Models;
@@ -141,7 +140,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> RegisterMemberAsync(MemberRegistrationModel model)
         {
             var response = await SendPostMessageAsync(model, $"{RegistrationPath}/register");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         #endregion
@@ -156,9 +155,8 @@ namespace JGP.Members.Web.Proxy
         /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
         public async Task<ActionReceipt?> ChangePasswordAsync(string emailAddress, string password)
         {
-            var response =
-                await SendPostMessageAsync(null, $"{MemberPath}/setpassword/{emailAddress}?password={password}");
-            return await response.ToActionReceiptAsync();
+            var response = await SendPostMessageAsync(null, $"{MemberPath}/setpassword/{emailAddress}?password={password}");
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         /// <summary>
@@ -169,7 +167,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> DisableMemberAsync(string emailAddress)
         {
             var response = await SendPostMessageAsync(null, $"{MemberPath}/email/disable/{emailAddress}");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         /// <summary>
@@ -180,7 +178,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> DisableMemberAsync(Guid memberId)
         {
             var response = await SendPostMessageAsync(null, $"{MemberPath}/id/disable/{memberId}");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         /// <summary>
@@ -191,7 +189,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> EnableMemberAsync(string emailAddress)
         {
             var response = await SendPostMessageAsync(null, $"{MemberPath}/email/enable/{emailAddress}");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         /// <summary>
@@ -202,7 +200,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> EnableMemberAsync(Guid memberId)
         {
             var response = await SendPostMessageAsync(null, $"{MemberPath}/id/enable/{memberId}");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         /// <summary>
@@ -245,7 +243,7 @@ namespace JGP.Members.Web.Proxy
         public async Task<ActionReceipt?> UpdateMemberAsync(MemberModel model)
         {
             var response = await SendPutMessageAsync(model, $"{MemberPath}/update");
-            return await response.ToActionReceiptAsync();
+            return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
         #endregion

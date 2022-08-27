@@ -55,16 +55,17 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>IActionResult.</returns>
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("register")]
         public async Task<IActionResult> Register(MemberRegistrationModel model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 
             var receipt = await _registrationService.RegisterMemberAsync(model.GetRegistrationCommand());
-
             return receipt.Outcome == ActionOutcome.Success
-                ? receipt.ToActionResult()
-                : BadRequest(receipt.ToProblemDetails("Registration Failed"));
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
     }
 }

@@ -15,7 +15,7 @@
 namespace JGP.Members.Api.Controllers
 {
     using System.ComponentModel.DataAnnotations;
-    using JGP.Core.Services.Extensions.Web;
+    using JGP.Core.Services;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Services;
@@ -57,14 +57,15 @@ namespace JGP.Members.Api.Controllers
         /// <param name="emailAddress">The email address.</param>
         /// <param name="password">The password.</param>
         /// <returns>IActionResult.</returns>
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("setpassword/{emailAddress}")]
         public async Task<IActionResult> ChangePassword([Required] string emailAddress, [Required] string password)
         {
             var receipt = await _memberService.ChangePasswordAsync(emailAddress, password);
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
 
         /// <summary>
@@ -72,14 +73,15 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="emailAddress">The email address.</param>
         /// <returns>IActionResult.</returns>
-        [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("email/disable/{emailAddress}")]
         public async Task<IActionResult> DisableMember([Required] string emailAddress)
         {
             var receipt = await _memberService.DisableMemberAsync(emailAddress);
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
 
         /// <summary>
@@ -87,14 +89,15 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="memberId">The member identifier.</param>
         /// <returns>IActionResult.</returns>
-        [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("id/disable/{memberId:guid}")]
         public async Task<IActionResult> DisableMember([Required] Guid memberId)
         {
             var receipt = await _memberService.DisableMemberAsync(memberId);
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
 
         /// <summary>
@@ -102,14 +105,15 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="emailAddress">The email address.</param>
         /// <returns>IActionResult.</returns>
-        [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("email/enable/{emailAddress}")]
         public async Task<IActionResult> EnableMember([Required] string emailAddress)
         {
             var receipt = await _memberService.EnableMemberAsync(emailAddress);
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
 
         /// <summary>
@@ -117,14 +121,15 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="memberId">The member identifier.</param>
         /// <returns>IActionResult.</returns>
-        [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPost("id/enable/{memberId:guid}")]
         public async Task<IActionResult> EnableMember([Required] Guid memberId)
         {
             var receipt = await _memberService.EnableMemberAsync(memberId);
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
 
         /// <summary>
@@ -133,6 +138,7 @@ namespace JGP.Members.Api.Controllers
         /// <param name="emailAddress">The email address.</param>
         /// <returns>IActionResult.</returns>
         [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("email/{emailAddress}")]
         public async Task<IActionResult> GetMember(string emailAddress)
         {
@@ -152,6 +158,7 @@ namespace JGP.Members.Api.Controllers
         /// <param name="memberId">The member identifier.</param>
         /// <returns>IActionResult.</returns>
         [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("id/{memberId:guid}")]
         public async Task<IActionResult> GetMember(Guid memberId)
         {
@@ -170,14 +177,15 @@ namespace JGP.Members.Api.Controllers
         /// </summary>
         /// <param name="model">The model.</param>
         /// <returns>A Task&lt;IActionResult&gt; representing the asynchronous operation.</returns>
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
         [HttpPut("update")]
         public async Task<IActionResult> UpdateMemberAsync([Required] MemberModel model)
         {
             var receipt = await _memberService.UpdateMemberAsync(model.GetUpdateCommand());
-            return receipt.ToActionResult();
+            return receipt.Outcome == ActionOutcome.Success
+                ? Ok(receipt)
+                : BadRequest(receipt);
         }
     }
 }

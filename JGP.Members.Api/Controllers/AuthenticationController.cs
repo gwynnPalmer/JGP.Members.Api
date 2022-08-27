@@ -32,7 +32,7 @@ using Web.Models;
 [Produces("application/json")]
 [ProducesResponseType(StatusCodes.Status200OK)]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
-[ProducesResponseType(StatusCodes.Status404NotFound)]
+[ProducesResponseType(StatusCodes.Status401Unauthorized)]
 [Authorize]
 public class AuthenticationController : ControllerBase
 {
@@ -61,8 +61,8 @@ public class AuthenticationController : ControllerBase
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var result = await _authenticationService.AuthenticateAsync(model.GetLoginCommand());
+        var authenticationResult = await _authenticationService.AuthenticateAsync(model.GetLoginCommand());
 
-        return new OkObjectResult(result);
+        return new OkObjectResult(authenticationResult);
     }
 }
