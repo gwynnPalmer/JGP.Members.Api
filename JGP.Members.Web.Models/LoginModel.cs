@@ -28,6 +28,8 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The email address.</value>
         [Required]
+        [StringLength(100)]
+        [DataType(DataType.EmailAddress)]
         [JsonPropertyName("emailAddress")]
         public string EmailAddress { get; set; }
 

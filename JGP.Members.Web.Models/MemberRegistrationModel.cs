@@ -38,8 +38,8 @@ namespace JGP.Members.Web.Models
         /// <value>The email address.</value>
         [Required]
         [StringLength(100)]
-        [JsonPropertyName("emailAddress")]
         [DataType(DataType.EmailAddress)]
+        [JsonPropertyName("emailAddress")]
         public string EmailAddress { get; set; }
 
         /// <summary>
@@ -66,8 +66,19 @@ namespace JGP.Members.Web.Models
         /// <value>The password.</value>
         [Required]
         [StringLength(50)]
+        [Compare(nameof(ConfirmPassword), ErrorMessage = "Passwords do not match")]
         [JsonPropertyName("password")]
         public string Password { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the password.
+        /// </summary>
+        /// <value>The password.</value>
+        [Required]
+        [StringLength(50)]
+        [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
+        [JsonPropertyName("confirmPassword")]
+        public string ConfirmPassword { get; set; }
 
         /// <summary>
         ///     Gets the registration command.
