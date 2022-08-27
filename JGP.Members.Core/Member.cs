@@ -56,34 +56,10 @@
         }
 
         /// <summary>
-        ///     Gets or sets the created on.
+        ///     Gets or sets the identifier.
         /// </summary>
-        /// <value>The created on.</value>
-        public DateTimeOffset CreatedOn { get; protected set; }
-
-        /// <summary>
-        ///     Gets or sets the culture code.
-        /// </summary>
-        /// <value>The culture code.</value>
-        public string CultureCode { get; protected set; }
-
-        /// <summary>
-        ///     Gets or sets the date last logged in.
-        /// </summary>
-        /// <value>The date last logged in.</value>
-        public DateTimeOffset? DateLastLoggedIn { get; protected set; }
-
-        /// <summary>
-        ///     Gets or sets the email address.
-        /// </summary>
-        /// <value>The email address.</value>
-        public string EmailAddress { get; protected set; }
-
-        /// <summary>
-        ///     Gets or sets the failed login attempt count.
-        /// </summary>
-        /// <value>The failed login attempt count.</value>
-        public int FailedLoginAttemptCount { get; protected set; }
+        /// <value>The identifier.</value>
+        public Guid Id { get; protected set; }
 
         /// <summary>
         ///     Gets or sets the first name.
@@ -92,10 +68,22 @@
         public string FirstName { get; protected set; }
 
         /// <summary>
-        ///     Gets or sets the identifier.
+        ///     Gets or sets the last name.
         /// </summary>
-        /// <value>The identifier.</value>
-        public Guid Id { get; protected set; }
+        /// <value>The last name.</value>
+        public string LastName { get; protected set; }
+
+        /// <summary>
+        ///     Gets or sets the email address.
+        /// </summary>
+        /// <value>The email address.</value>
+        public string EmailAddress { get; protected set; }
+
+        /// <summary>
+        ///     Gets or sets the culture code.
+        /// </summary>
+        /// <value>The culture code.</value>
+        public string CultureCode { get; protected set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether this instance is enabled.
@@ -104,16 +92,28 @@
         public bool IsEnabled { get; protected set; }
 
         /// <summary>
-        ///     Gets or sets the last name.
-        /// </summary>
-        /// <value>The last name.</value>
-        public string LastName { get; protected set; }
-
-        /// <summary>
         ///     Gets or sets the password hash.
         /// </summary>
         /// <value>The password hash.</value>
         public string PasswordHash { get; protected set; }
+
+        /// <summary>
+        ///     Gets or sets the failed login attempt count.
+        /// </summary>
+        /// <value>The failed login attempt count.</value>
+        public int FailedLoginAttemptCount { get; protected set; }
+
+        /// <summary>
+        ///     Gets or sets the created on.
+        /// </summary>
+        /// <value>The created on.</value>
+        public DateTimeOffset CreatedOn { get; protected set; }
+
+        /// <summary>
+        ///     Gets or sets the date last logged in.
+        /// </summary>
+        /// <value>The date last logged in.</value>
+        public DateTimeOffset? DateLastLoggedIn { get; protected set; }
 
         #region DOMAIN METHODS
 

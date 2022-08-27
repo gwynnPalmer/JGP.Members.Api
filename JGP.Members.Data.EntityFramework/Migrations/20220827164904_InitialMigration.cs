@@ -18,15 +18,15 @@ namespace JGP.Members.Data.EntityFramework.Migrations
                 columns: table => new
                 {
                     MemberId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
-                    CultureCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, defaultValue: "en-GB"),
-                    DateLastLoggedIn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
-                    EmailAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    FailedLoginAttemptCount = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     FirstName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    IsEnabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
                     LastName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    PasswordHash = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false)
+                    EmailAddress = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    CultureCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false, defaultValue: "en-GB"),
+                    IsEnabled = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    PasswordHash = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    FailedLoginAttemptCount = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    CreatedOn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
+                    DateLastLoggedIn = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)
                 },
                 constraints: table =>
                 {
