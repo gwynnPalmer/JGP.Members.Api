@@ -28,9 +28,6 @@ jobs:
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
 
-    - name: Add nuget.org as nuget package source
-      run: dotnet nuget add source https://api.nuget.org/v3/index.json --name nuget.org
-
     - name: Restore dependencies
       run: dotnet restore $SOLUTION
 
@@ -49,5 +46,5 @@ jobs:
     - name: Pack Proxy project
       run: dotnet pack **/*JGP.Members.Web.Proxy.csproj --configuration $BUILD_CONFIG --include-symbols -p:SymbolPackageFormat=snupkg -o .
 
-    - name: Publish package to NuGet
+    - name: Publish package to Github Packages
       run: dotnet nuget push *.nupkg --source https://nuget.pkg.github.com/gwynnPalmer/index.json --api-key ${{secrets.PACKAGE_API_TOKEN}} --skip-duplicate
