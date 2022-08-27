@@ -53,7 +53,7 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The return URL.</value>
         [JsonPropertyName("returnUrl")]
-        public string ReturnUrl { get; set; }
+        public string? ReturnUrl { get; set; }
 
         /// <summary>
         ///     Gets the login command.

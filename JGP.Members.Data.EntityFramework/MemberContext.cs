@@ -16,7 +16,7 @@
         ///     The local connection string
         /// </summary>
         private readonly string _localConnectionString =
-            @"Server=.;Database=Members;Trusted_Connection=True;TrustServerCertificate=True;";
+            @"Server=.;Database=jgp-members;Trusted_Connection=True;TrustServerCertificate=True;";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MemberContext" /> class.
