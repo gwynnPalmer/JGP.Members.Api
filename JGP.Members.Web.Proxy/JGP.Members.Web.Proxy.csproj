@@ -11,7 +11,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
-		<PackageReference Include="JGP.Core" Version="1.0.3" />
+		<PackageReference Include="JGP.Core" Version="1.0.4" />
 		<PackageReference Include="JGP.Security" Version="1.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
 	</ItemGroup>

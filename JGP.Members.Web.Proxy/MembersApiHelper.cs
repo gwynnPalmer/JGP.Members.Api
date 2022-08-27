@@ -21,6 +21,7 @@ namespace JGP.Members.Web.Proxy
     using System.Text.Json.Serialization;
     using Api.KeyManagement.Authentication;
     using Core.Security;
+    using JGP.Core.Serialization;
     using JGP.Core.Services;
     using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
@@ -79,6 +80,7 @@ namespace JGP.Members.Web.Proxy
         {
             JsonOptions = new JsonSerializerOptions();
             JsonOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+            JsonOptions.Converters.Add(new ActionReceiptConverter());
             JsonOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
             JsonOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
             JsonOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
