@@ -1,9 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Members API Entities</Description>
+		<Authors>Joshua Gwynn-Palmer</Authors>
+		<Copyright>Joshua Gwynn-Palmer</Copyright>
+		<Version>1.0.0</Version>
+		<PackageId>JGP.Members.Core</PackageId>
+		<PackageDescription>Members API Entities</PackageDescription>
+		<RepositoryUrl>https://github.com/gwynnPalmer/JGP.Members.Api</RepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
 </Project>

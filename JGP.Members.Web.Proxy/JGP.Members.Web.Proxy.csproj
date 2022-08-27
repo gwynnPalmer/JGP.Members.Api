@@ -1,20 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
-    <PackageReference Include="JGP.Core" Version="1.0.3" />
-    <PackageReference Include="JGP.Security" Version="1.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\JGP.Members.Web.Models\JGP.Members.Web.Models.csproj" />
-  </ItemGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Description>Members API Web Proxy</Description>
+		<Authors>Joshua Gwynn-Palmer</Authors>
+		<Copyright>Joshua Gwynn-Palmer</Copyright>
+		<Version>1.0.0</Version>
+		<PackageId>JGP.Members.Web.Proxy</PackageId>
+		<PackageDescription>Members API Web Proxy</PackageDescription>
+		<RepositoryUrl>https://github.com/gwynnPalmer/JGP.Members.Api</RepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="JGP.Api.KeyManagement" Version="1.0.0" />
+		<PackageReference Include="JGP.Core" Version="1.0.3" />
+		<PackageReference Include="JGP.Security" Version="1.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\JGP.Members.Web.Models\JGP.Members.Web.Models.csproj" />
+	</ItemGroup>
 </Project>

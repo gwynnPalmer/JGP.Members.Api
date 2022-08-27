@@ -5,7 +5,10 @@
     using Microsoft.OpenApi.Models;
     using Swashbuckle.AspNetCore.SwaggerGen;
 
-    public class SwaggerConfiguration
+    /// <summary>
+    ///     Class SwaggerConfiguration.
+    /// </summary>
+    public static class SwaggerConfiguration
     {
         /// <summary>
         ///     Configures the services.
