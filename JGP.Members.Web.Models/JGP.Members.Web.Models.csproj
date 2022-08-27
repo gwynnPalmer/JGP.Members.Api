@@ -1,15 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="..\common.props" />
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<Description>Members API Web Models</Description>
-		<Authors>Joshua Gwynn-Palmer</Authors>
-		<Copyright>Joshua Gwynn-Palmer</Copyright>
-		<Version>1.0.0</Version>
 		<PackageId>JGP.Members.Web.Models</PackageId>
 		<PackageDescription>Members API Web Models</PackageDescription>
-		<RepositoryUrl>https://github.com/gwynnPalmer/JGP.Members.Api</RepositoryUrl>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
