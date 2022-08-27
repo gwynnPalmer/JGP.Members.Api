@@ -27,7 +27,7 @@ namespace JGP.Members.Api.Controllers
     /// </summary>
     /// <seealso cref="ControllerBase" />
     [ApiVersion("1")]
-    [Route("api/v{version:apiVersion}/member")]
+    [Route("v{version:apiVersion}/member")]
     [ApiController]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]

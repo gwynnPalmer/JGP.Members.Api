@@ -24,7 +24,7 @@ using Security;
 /// </summary>
 /// <seealso cref="ControllerBase" />
 [ApiVersion("1")]
-[Route("api/v{version:apiVersion}/password")]
+[Route("v{version:apiVersion}/password")]
 [ApiController]
 [Produces("application/json")]
 [ProducesResponseType(StatusCodes.Status200OK)]

@@ -27,7 +27,7 @@ using Web.Models;
 /// </summary>
 /// <seealso cref="ControllerBase" />
 [ApiVersion("1")]
-[Route("api/v{version:apiVersion}/authentication")]
+[Route("v{version:apiVersion}/authentication")]
 [ApiController]
 [Produces("application/json")]
 [ProducesResponseType(StatusCodes.Status200OK)]
