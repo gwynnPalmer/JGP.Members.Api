@@ -59,14 +59,14 @@ internal class MemberMap : IEntityTypeConfiguration<Member>
         // Table & Column Mappings.
         builder.ToTable("Members", "dbo");
         builder.Property(member => member.Id).HasColumnName("MemberId");
-        builder.Property(member => member.EmailAddress).HasColumnName("EmailAddress");
         builder.Property(member => member.FirstName).HasColumnName("FirstName");
         builder.Property(member => member.LastName).HasColumnName("LastName");
-        builder.Property(member => member.PasswordHash).HasColumnName("PasswordHash");
+        builder.Property(member => member.EmailAddress).HasColumnName("EmailAddress");
         builder.Property(member => member.CultureCode).HasColumnName("CultureCode");
+        builder.Property(member => member.IsEnabled).HasColumnName("IsEnabled");
+        builder.Property(member => member.PasswordHash).HasColumnName("PasswordHash");
+        builder.Property(member => member.FailedLoginAttemptCount).HasColumnName("FailedLoginAttemptCount");
         builder.Property(member => member.CreatedOn).HasColumnName("CreatedOn");
         builder.Property(member => member.DateLastLoggedIn).HasColumnName("DateLastLoggedIn");
-        builder.Property(member => member.FailedLoginAttemptCount).HasColumnName("FailedLoginAttemptCount");
-        builder.Property(member => member.IsEnabled).HasColumnName("IsEnabled");
     }
 }

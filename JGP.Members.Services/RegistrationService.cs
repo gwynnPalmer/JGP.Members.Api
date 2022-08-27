@@ -18,6 +18,7 @@ using Core;
 using Core.Commands;
 using Data.EntityFramework;
 using JGP.Core.Services;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Security;
 
@@ -77,8 +78,11 @@ public class RegistrationService : IRegistrationService
     {
         try
         {
-            command.PasswordHash = _passwordService.Hash(command.PasswordHash);
+            var emailExists = await _memberContext.Members
+                .AnyAsync(x => x.EmailAddress == command.EmailAddress);
+            if (emailExists) return ActionReceipt.GetErrorReceipt($"An account for {command.EmailAddress} already exists.");
 
+            command.PasswordHash = _passwordService.Hash(command.Password);
             var member = new Member(command);
 
             await _memberContext.Members.AddAsync(member);

@@ -47,7 +47,7 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The first name.</value>
         [Required]
-        [StringLength(100)]
+        [StringLength(100, MinimumLength = 2)]
         [JsonPropertyName("firstName")]
         public string FirstName { get; set; }
 
@@ -56,7 +56,7 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The last name.</value>
         [Required]
-        [StringLength(100)]
+        [StringLength(100, MinimumLength = 2)]
         [JsonPropertyName("lastName")]
         public string LastName { get; set; }
 
@@ -65,7 +65,7 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The password.</value>
         [Required]
-        [StringLength(50)]
+        [StringLength(12, MinimumLength = 8)]
         [Compare(nameof(ConfirmPassword), ErrorMessage = "Passwords do not match")]
         [JsonPropertyName("password")]
         public string Password { get; set; }
@@ -75,7 +75,7 @@ namespace JGP.Members.Web.Models
         /// </summary>
         /// <value>The password.</value>
         [Required]
-        [StringLength(50)]
+        [StringLength(12, MinimumLength = 8)]
         [Compare(nameof(Password), ErrorMessage = "Passwords do not match")]
         [JsonPropertyName("confirmPassword")]
         public string ConfirmPassword { get; set; }

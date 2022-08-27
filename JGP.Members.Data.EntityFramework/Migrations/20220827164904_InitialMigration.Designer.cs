@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JGP.Members.Data.EntityFramework.Migrations
 {
     [DbContext(typeof(MemberContext))]
-    [Migration("20220728190458_InitialMigration")]
+    [Migration("20220827164904_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
