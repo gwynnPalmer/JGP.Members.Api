@@ -301,7 +301,7 @@ namespace JGP.Members.Web.Proxy
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Could not fulfill DELETE request at route: {route}");
+                _logger.LogError(ex, "Could not fulfill DELETE request at route: {route}", route);
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }
@@ -320,7 +320,7 @@ namespace JGP.Members.Web.Proxy
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Could not fulfill GET request at route: {route}");
+                _logger.LogError(ex, "Could not fulfill GET request at route: {route}", route);
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }
@@ -331,10 +331,15 @@ namespace JGP.Members.Web.Proxy
         /// <param name="model">The model.</param>
         /// <param name="route">The route.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        private async Task<HttpResponseMessage> SendPostMessageAsync(object model, string route)
+        private async Task<HttpResponseMessage> SendPostMessageAsync(object? model, string route)
         {
             try
             {
+                if (model == null)
+                {
+                    return await _httpClient!.SendAsync(new HttpRequestMessage(HttpMethod.Post, route));
+                }
+
                 var json = JsonSerializer.Serialize(model);
                 var request = new HttpRequestMessage(HttpMethod.Post, route)
                 {
@@ -344,7 +349,7 @@ namespace JGP.Members.Web.Proxy
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Could not fulfill POST request at route: {route}");
+                _logger.LogError(ex, "Could not fulfill POST request at route: {route}", route);
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }
@@ -355,10 +360,15 @@ namespace JGP.Members.Web.Proxy
         /// <param name="model">The model.</param>
         /// <param name="route">The route.</param>
         /// <returns>Task&lt;HttpResponseMessage&gt;.</returns>
-        private async Task<HttpResponseMessage> SendPutMessageAsync(object model, string route)
+        private async Task<HttpResponseMessage> SendPutMessageAsync(object? model, string route)
         {
             try
             {
+                if (model == null)
+                {
+                    return await _httpClient!.SendAsync(new HttpRequestMessage(HttpMethod.Put, route));
+                }
+
                 var json = JsonSerializer.Serialize(model);
                 var request = new HttpRequestMessage(HttpMethod.Put, route)
                 {
@@ -368,7 +378,7 @@ namespace JGP.Members.Web.Proxy
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Could not fulfill PUT request at route: {route}");
+                _logger.LogError(ex, "Could not fulfill PUT request at route: {route}", route);
                 return new HttpResponseMessage(HttpStatusCode.InternalServerError);
             }
         }

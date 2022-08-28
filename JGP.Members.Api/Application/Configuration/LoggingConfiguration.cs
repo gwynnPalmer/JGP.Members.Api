@@ -6,7 +6,7 @@
     {
         public static void Configure(IServiceCollection services, IConfiguration configuration, AppSettings appSettings)
         {
-            var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
+            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Development";
 
             services.AddLogging(loggingBuilder =>
             {

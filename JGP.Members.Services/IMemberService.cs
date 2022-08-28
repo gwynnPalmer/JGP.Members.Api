@@ -1,9 +1,28 @@
-﻿namespace JGP.Members.Services;
+﻿// ***********************************************************************
+// Assembly         : JGP.Members.Services
+// Author           : Joshua Gwynn-Palmer
+// Created          : 07-27-2022
+//
+// Last Modified By : Joshua Gwynn-Palmer
+// Last Modified On : 07-28-2022
+// ***********************************************************************
+// <copyright file="IMemberService.cs" company="JGP.Members.Services">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace JGP.Members.Services;
 
 using Core;
 using Core.Commands;
 using JGP.Core.Services;
 
+/// <summary>
+///     Interface IMemberService
+///     Implements the <see cref="System.IDisposable" />
+/// </summary>
+/// <seealso cref="System.IDisposable" />
 public interface IMemberService : IDisposable
 {
     /// <summary>

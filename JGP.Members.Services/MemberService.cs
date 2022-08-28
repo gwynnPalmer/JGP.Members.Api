@@ -63,8 +63,8 @@ namespace JGP.Members.Services
         /// </summary>
         public void Dispose()
         {
-            _memberContext?.Dispose();
-            _passwordService?.Dispose();
+            _memberContext.Dispose();
+            _passwordService.Dispose();
         }
 
         #endregion
@@ -94,7 +94,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to update password for Member ID: {memberId}");
+                _logger.LogError(ex, "Failed to update password for Member ID: {memberId}", memberId);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -120,7 +120,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to update password for Email Address: {emailAddress}");
+                _logger.LogError(ex, "Failed to update password for Email Address: {emailAddress}", emailAddress);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -143,7 +143,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to disable member for Member ID: {memberId}");
+                _logger.LogError(ex, "Failed to disable member for Member ID: {memberId}", memberId);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -166,7 +166,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to disable member for Email Address: {emailAddress}");
+                _logger.LogError(ex, "Failed to disable member for Email Address: {emailAddress}", emailAddress);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -189,7 +189,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to enable member for Member ID: {memberId}");
+                _logger.LogError(ex, "Failed to enable member for Member ID: {memberId}", memberId);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -212,7 +212,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to enable member for Email Address: {emailAddress}");
+                _logger.LogError(ex, "Failed to enable member for Email Address: {emailAddress}", emailAddress);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }
@@ -232,7 +232,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to get member for Member ID: {memberId}");
+                _logger.LogError(ex, "Failed to get member for Member ID: {memberId}", memberId);
                 return null;
             }
         }
@@ -252,7 +252,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to get member for Email Address: {emailAddress}");
+                _logger.LogError(ex, "Failed to get member for Email Address: {emailAddress}", emailAddress);
                 return null;
             }
         }
@@ -275,7 +275,7 @@ namespace JGP.Members.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, $"Failed to update member for Member ID: {command.Id}");
+                _logger.LogError(ex, "Failed to update member for Member ID: {command.Id}", command.Id);
                 return ActionReceipt.GetErrorReceipt(ex);
             }
         }

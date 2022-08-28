@@ -1,4 +1,18 @@
-﻿namespace JGP.Members.Services
+﻿// ***********************************************************************
+// Assembly         : JGP.Members.Services
+// Author           : Joshua Gwynn-Palmer
+// Created          : 07-26-2022
+//
+// Last Modified By : Joshua Gwynn-Palmer
+// Last Modified On : 08-28-2022
+// ***********************************************************************
+// <copyright file="AuthenticationService.cs" company="JGP.Members.Services">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+
+namespace JGP.Members.Services
 {
     using System.Security.Claims;
     using Core;
@@ -42,8 +56,8 @@
         /// </summary>
         public void Dispose()
         {
-            _memberContext?.Dispose();
-            _passwordService?.Dispose();
+            _memberContext.Dispose();
+            _passwordService.Dispose();
         }
 
         #endregion
@@ -71,6 +85,7 @@
                     member.RegisterSuccessfulLogin();
                     authenticationResult = AuthenticationResult.CreateSuccessResult(member);
                     break;
+                case VerificationOutcome.Failure:
                 default:
                     member.RegisterFailedLogin();
                     authenticationResult = AuthenticationResult.CreateFailedResult();

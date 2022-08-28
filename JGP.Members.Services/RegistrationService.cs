@@ -63,8 +63,8 @@ public class RegistrationService : IRegistrationService
     /// </summary>
     public void Dispose()
     {
-        _memberContext?.Dispose();
-        _passwordService?.Dispose();
+        _memberContext.Dispose();
+        _passwordService.Dispose();
     }
 
     #endregion
@@ -91,7 +91,7 @@ public class RegistrationService : IRegistrationService
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, $"Failed to create member for {command.EmailAddress}");
+            _logger.LogError(ex, "Failed to create member for {command.EmailAddress}", command.EmailAddress);
             return ActionReceipt.GetErrorReceipt(ex);
         }
     }

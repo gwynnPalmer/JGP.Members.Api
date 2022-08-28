@@ -15,8 +15,7 @@
         /// <summary>
         ///     The local connection string
         /// </summary>
-        private readonly string _localConnectionString =
-            @"Server=.;Database=jgp-members;Trusted_Connection=True;TrustServerCertificate=True;";
+        private const string LocalConnectionString = @"Server=.;Database=jgp-members;Trusted_Connection=True;TrustServerCertificate=True;";
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="MemberContext" /> class.
@@ -78,7 +77,7 @@
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(_localConnectionString);
+                optionsBuilder.UseSqlServer(LocalConnectionString);
             }
         }
 

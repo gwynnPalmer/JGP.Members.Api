@@ -25,7 +25,7 @@
         ///     Gets the configuration.
         /// </summary>
         /// <value>The configuration.</value>
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         /// <summary>
         ///     Configures the specified application.
