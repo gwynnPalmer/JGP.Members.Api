@@ -29,5 +29,5 @@ public interface IRegistrationService : IDisposable
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-    Task<ActionReceipt> RegisterMemberAsync(MemberRegistrationCommand command);
+    Task<ActionReceipt> RegisterMemberAsync(RegistrationCommand command);
 }

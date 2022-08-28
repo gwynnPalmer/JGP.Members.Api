@@ -12,28 +12,9 @@
         /// <summary>
         ///     Initializes a new instance of the <see cref="Member" /> class.
         /// </summary>
-        /// <param name="createCommand">The createCommand.</param>
-        /// <exception cref="System.ArgumentNullException">command</exception>
-        public Member(MemberCreateCommand createCommand)
-        {
-            _ = createCommand ?? throw new ArgumentNullException(nameof(createCommand));
-            Id = Guid.NewGuid();
-            IsEnabled = true;
-            CreatedOn = DateTimeOffset.UtcNow;
-            FailedLoginAttemptCount = 0;
-            CultureCode = createCommand.CultureCode;
-            EmailAddress = createCommand.EmailAddress;
-            FirstName = createCommand.FirstName;
-            LastName = createCommand.LastName;
-            PasswordHash = createCommand.PasswordHash;
-        }
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="Member" /> class.
-        /// </summary>
         /// <param name="registrationCommand">The registration command.</param>
         /// <exception cref="System.ArgumentNullException">registrationCommand</exception>
-        public Member(MemberRegistrationCommand registrationCommand)
+        public Member(RegistrationCommand registrationCommand)
         {
             _ = registrationCommand ?? throw new ArgumentNullException(nameof(registrationCommand));
             Id = Guid.NewGuid();
@@ -181,10 +162,10 @@
         #region OVERRIDES & ESSENTIALS
 
         /// <summary>
-        ///     Equalses the specified member.
+        ///     Determines whether the specified <see cref="Member" /> is equal to this instance.
         /// </summary>
         /// <param name="member">The member.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> if the specified <see cref="Member" /> is equal to this instance; otherwise, <c>false</c>.</returns>
         public bool Equals(Member? member)
         {
             if (member is null) return false;

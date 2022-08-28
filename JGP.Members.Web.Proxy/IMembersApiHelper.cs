@@ -39,12 +39,11 @@ public interface IMembersApiHelper
     Task<ActionReceipt?> RegisterMemberAsync(MemberRegistrationModel model);
 
     /// <summary>
-    ///     Change password as an asynchronous operation.
+    ///     Changes the password asynchronous.
     /// </summary>
-    /// <param name="emailAddress">The email address.</param>
-    /// <param name="password">The password.</param>
-    /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-    Task<ActionReceipt?> ChangePasswordAsync(string emailAddress, string password);
+    /// <param name="model">The model.</param>
+    /// <returns>Task&lt;System.Nullable&lt;ActionReceipt&gt;&gt;.</returns>
+    Task<ActionReceipt?> ChangePasswordAsync(MemberChangePasswordModel model);
 
     /// <summary>
     ///     Disable member as an asynchronous operation.

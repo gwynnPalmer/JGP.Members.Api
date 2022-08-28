@@ -56,16 +56,15 @@ namespace JGP.Members.Web.Models
         public string? ReturnUrl { get; set; }
 
         /// <summary>
-        ///     Gets the login command.
+        ///     Gets the authentication request.
         /// </summary>
-        /// <returns>LoginCommand.</returns>
-        public LoginCommand GetLoginCommand()
+        /// <returns>AuthenticationRequest.</returns>
+        public AuthenticationRequest GetAuthenticationRequest()
         {
-            return new LoginCommand
+            return new AuthenticationRequest()
             {
                 EmailAddress = EmailAddress,
-                Password = Password,
-                RememberMe = RememberMe
+                Password = Password
             };
         }
     }

@@ -28,19 +28,9 @@ public interface IMemberService : IDisposable
     /// <summary>
     ///     Change password as an asynchronous operation.
     /// </summary>
-    /// <param name="memberId">The member identifier.</param>
-    /// <param name="currentPassword">The current password.</param>
-    /// <param name="newPassword">The new password.</param>
+    /// <param name="command">The command.</param>
     /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-    Task<ActionReceipt> ChangePasswordAsync(Guid memberId, string currentPassword, string newPassword);
-
-    /// <summary>
-    ///     Change password as an asynchronous operation.
-    /// </summary>
-    /// <param name="emailAddress">The email address.</param>
-    /// <param name="newPassword">The new password.</param>
-    /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-    Task<ActionReceipt> ChangePasswordAsync(string emailAddress, string newPassword);
+    Task<ActionReceipt> ChangePasswordAsync(ChangePasswordCommand command);
 
     /// <summary>
     ///     Disable member as an asynchronous operation.

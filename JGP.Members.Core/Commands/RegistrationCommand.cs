@@ -6,7 +6,7 @@
 // Last Modified By : Joshua Gwynn-Palmer
 // Last Modified On : 07-27-2022
 // ***********************************************************************
-// <copyright file="MemberRegistrationCommand.cs" company="JGP.Members.Core">
+// <copyright file="RegistrationCommand.cs" company="JGP.Members.Core">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -15,9 +15,9 @@
 namespace JGP.Members.Core.Commands
 {
     /// <summary>
-    ///     Class MemberRegistrationCommand.
+    ///     Class RegistrationCommand.
     /// </summary>
-    public class MemberRegistrationCommand
+    public class RegistrationCommand
     {
         /// <summary>
         ///     Gets or sets the culture code.

@@ -65,19 +65,20 @@ namespace JGP.Members.Services
         /// <summary>
         ///     Authenticate as an asynchronous operation.
         /// </summary>
-        /// <param name="command">The command.</param>
+        /// <param name="emailAddress">The email address.</param>
+        /// <param name="password">The password.</param>
         /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
-        public async Task<AuthenticationResult> AuthenticateAsync(LoginCommand command)
+        public async Task<AuthenticationResult> AuthenticateAsync(string emailAddress, string password)
         {
             AuthenticationResult authenticationResult;
-            var member = await _memberContext.Members.FirstOrDefaultAsync(m => m.EmailAddress == command.EmailAddress);
+            var member = await _memberContext.Members.FirstOrDefaultAsync(m => m.EmailAddress == emailAddress);
 
             if (member is null || !member.IsEnabled)
             {
                 return AuthenticationResult.CreateFailedResult();
             }
 
-            var result = _passwordService.Verify(command.Password, member.PasswordHash);
+            var result = _passwordService.Verify(password, member.PasswordHash);
 
             switch (result.Outcome)
             {

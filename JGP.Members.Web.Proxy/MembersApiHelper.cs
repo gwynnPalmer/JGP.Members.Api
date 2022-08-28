@@ -121,7 +121,7 @@ namespace JGP.Members.Web.Proxy
         /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
         public async Task<AuthenticationResult?> AuthenticateAsync(LoginModel model)
         {
-            var response = await SendPostMessageAsync(model, $"{AuthenticationPath}/authenticate");
+            var response = await SendPostMessageAsync(model.GetAuthenticationRequest(), $"{AuthenticationPath}/authenticate");
             if (!response.IsSuccessStatusCode)
             {
                 return null;
@@ -152,12 +152,11 @@ namespace JGP.Members.Web.Proxy
         /// <summary>
         ///     Change password as an asynchronous operation.
         /// </summary>
-        /// <param name="emailAddress">The email address.</param>
-        /// <param name="password">The password.</param>
+        /// <param name="model">The model.</param>
         /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-        public async Task<ActionReceipt?> ChangePasswordAsync(string emailAddress, string password)
+        public async Task<ActionReceipt?> ChangePasswordAsync(MemberChangePasswordModel model)
         {
-            var response = await SendPostMessageAsync(null, $"{MemberPath}/setpassword/{emailAddress}?password={password}");
+            var response = await SendPostMessageAsync(model, $"{MemberPath}/setpassword");
             return await response.Content.ReadFromJsonAsync<ActionReceipt>(JsonOptions);
         }
 
@@ -347,6 +346,7 @@ namespace JGP.Members.Web.Proxy
                 {
                     Content = new StringContent(json, Encoding.UTF8, "application/Json")
                 };
+
                 return await _httpClient!.SendAsync(request);
             }
             catch (Exception ex)
@@ -376,6 +376,7 @@ namespace JGP.Members.Web.Proxy
                 {
                     Content = new StringContent(json, Encoding.UTF8, "application/Json")
                 };
+
                 return await _httpClient!.SendAsync(request);
             }
             catch (Exception ex)

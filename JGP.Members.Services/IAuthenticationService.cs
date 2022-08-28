@@ -26,7 +26,8 @@ public interface IAuthenticationService : IDisposable
     /// <summary>
     ///     Authenticate as an asynchronous operation.
     /// </summary>
-    /// <param name="command">The command.</param>
+    /// <param name="emailAddress">The email address.</param>
+    /// <param name="password">The password.</param>
     /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
-    Task<AuthenticationResult> AuthenticateAsync(LoginCommand command);
+    Task<AuthenticationResult> AuthenticateAsync(string emailAddress, string password);
 }

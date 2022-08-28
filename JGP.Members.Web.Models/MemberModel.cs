@@ -80,22 +80,6 @@
         public string LastName { get; set; }
 
         /// <summary>
-        ///     Gets the create command.
-        /// </summary>
-        /// <returns>MemberCreateCommand.</returns>
-        public MemberCreateCommand GetCreateCommand()
-        {
-            return new MemberCreateCommand
-            {
-                CultureCode = CultureCode,
-                EmailAddress = EmailAddress,
-                FirstName = FirstName,
-                LastName = LastName
-                //Password?
-            };
-        }
-
-        /// <summary>
         ///     Gets the update command.
         /// </summary>
         /// <returns>MemberUpdateCommand.</returns>

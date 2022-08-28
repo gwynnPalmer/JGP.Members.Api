@@ -74,7 +74,7 @@ public class RegistrationService : IRegistrationService
     /// </summary>
     /// <param name="command">The command.</param>
     /// <returns>A Task&lt;ActionReceipt&gt; representing the asynchronous operation.</returns>
-    public async Task<ActionReceipt> RegisterMemberAsync(MemberRegistrationCommand command)
+    public async Task<ActionReceipt> RegisterMemberAsync(RegistrationCommand command)
     {
         try
         {

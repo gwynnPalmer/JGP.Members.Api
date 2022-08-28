@@ -54,15 +54,14 @@ namespace JGP.Members.Api.Controllers
         /// <summary>
         ///     Changes the password.
         /// </summary>
-        /// <param name="emailAddress">The email address.</param>
-        /// <param name="password">The password.</param>
+        /// <param name="model">The model.</param>
         /// <returns>IActionResult.</returns>
         [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ActionReceipt), StatusCodes.Status400BadRequest)]
-        [HttpPost("setpassword/{emailAddress}")]
-        public async Task<IActionResult> ChangePassword([Required] string emailAddress, [Required] string password)
+        [HttpPost("setpassword")]
+        public async Task<IActionResult> ChangePassword([Required] MemberChangePasswordModel model)
         {
-            var receipt = await _memberService.ChangePasswordAsync(emailAddress, password);
+            var receipt = await _memberService.ChangePasswordAsync(model.GetChangePasswordCommand());
             return receipt.Outcome == ActionOutcome.Success
                 ? Ok(receipt)
                 : BadRequest(receipt);
@@ -140,7 +139,7 @@ namespace JGP.Members.Api.Controllers
         [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("email/{emailAddress}")]
-        public async Task<IActionResult> GetMember(string emailAddress)
+        public async Task<IActionResult> GetMember([Required] string emailAddress)
         {
             var member = await _memberService.GetMemberAsync(emailAddress);
             if (member == null)
@@ -160,7 +159,7 @@ namespace JGP.Members.Api.Controllers
         [ProducesResponseType(typeof(MemberModel), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [HttpGet("id/{memberId:guid}")]
-        public async Task<IActionResult> GetMember(Guid memberId)
+        public async Task<IActionResult> GetMember([Required] Guid memberId)
         {
             var member = await _memberService.GetMemberAsync(memberId);
             if (member == null)

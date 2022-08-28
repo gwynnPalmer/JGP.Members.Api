@@ -51,17 +51,17 @@ public class AuthenticationController : ControllerBase
     }
 
     /// <summary>
-    ///     Authenticates the specified model.
+    ///     Authenticates the specified request.
     /// </summary>
-    /// <param name="model">The model.</param>
+    /// <param name="request">The request.</param>
     /// <returns>IActionResult.</returns>
     [ProducesResponseType(typeof(AuthenticationResult), StatusCodes.Status200OK)]
     [HttpPost("authenticate")]
-    public async Task<IActionResult> Authenticate([Required] LoginModel model)
+    public async Task<IActionResult> Authenticate([Required] AuthenticationRequest request)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
 
-        var authenticationResult = await _authenticationService.AuthenticateAsync(model.GetLoginCommand());
+        var authenticationResult = await _authenticationService.AuthenticateAsync(request.EmailAddress, request.Password);
 
         return new OkObjectResult(authenticationResult);
     }

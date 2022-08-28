@@ -6,6 +6,6 @@
 		<RepositoryType>git</RepositoryType>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<RepositoryUrl>https://github.com/gwynnPalmer/JGP.Members.Api</RepositoryUrl>
-		<Version>1.0.5</Version>
+		<Version>1.0.6</Version>
 	</PropertyGroup>
 </Project>

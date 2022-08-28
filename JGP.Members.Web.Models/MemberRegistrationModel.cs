@@ -23,6 +23,8 @@ namespace JGP.Members.Web.Models
     /// </summary>
     public class MemberRegistrationModel
     {
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
         /// <summary>
         ///     Gets or sets the culture code.
         /// </summary>
@@ -80,13 +82,15 @@ namespace JGP.Members.Web.Models
         [JsonPropertyName("confirmPassword")]
         public string ConfirmPassword { get; set; }
 
+#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+
         /// <summary>
         ///     Gets the registration command.
         /// </summary>
-        /// <returns>MemberRegistrationCommand.</returns>
-        public MemberRegistrationCommand GetRegistrationCommand()
+        /// <returns>RegistrationCommand.</returns>
+        public RegistrationCommand GetRegistrationCommand()
         {
-            return new MemberRegistrationCommand
+            return new RegistrationCommand
             {
                 CultureCode = CultureCode,
                 EmailAddress = EmailAddress,
