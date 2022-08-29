@@ -5,6 +5,7 @@
     using Application.Configuration;
     using Core.Configuration;
     using Data.EntityFramework;
+    using JGP.Core.Serialization;
     using Microsoft.AspNetCore.Mvc;
 
     /// <summary>
@@ -80,6 +81,7 @@
                 options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+                options.JsonSerializerOptions.Converters.Add(new ActionReceiptConverter());
             });
 
             // services.AddProblemDetails();

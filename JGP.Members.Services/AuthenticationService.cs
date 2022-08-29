@@ -19,6 +19,7 @@ namespace JGP.Members.Services
     using Core.Security;
     using Data.EntityFramework;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Logging;
     using Security;
 
     /// <summary>
@@ -28,6 +29,11 @@ namespace JGP.Members.Services
     /// <seealso cref="IAuthenticationService" />
     public class AuthenticationService : IAuthenticationService
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
+        private readonly ILogger<AuthenticationService> _logger;
+
         /// <summary>
         ///     The member context
         /// </summary>
@@ -39,14 +45,16 @@ namespace JGP.Members.Services
         private readonly IPasswordService _passwordService;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="AuthenticationService" /> class.
+        /// Initializes a new instance of the <see cref="AuthenticationService"/> class.
         /// </summary>
         /// <param name="memberContext">The member context.</param>
         /// <param name="passwordService">The password service.</param>
-        public AuthenticationService(IMemberContext memberContext, IPasswordService passwordService)
+        /// <param name="logger">The logger.</param>
+        public AuthenticationService(IMemberContext memberContext, IPasswordService passwordService, ILogger<AuthenticationService> logger)
         {
             _memberContext = memberContext;
             _passwordService = passwordService;
+            _logger = logger;
         }
 
         #region DISPOSAL
@@ -70,32 +78,40 @@ namespace JGP.Members.Services
         /// <returns>A Task&lt;AuthenticationResult&gt; representing the asynchronous operation.</returns>
         public async Task<AuthenticationResult> AuthenticateAsync(string emailAddress, string password)
         {
-            AuthenticationResult authenticationResult;
-            var member = await _memberContext.Members.FirstOrDefaultAsync(m => m.EmailAddress == emailAddress);
-
-            if (member is null || !member.IsEnabled)
+            try
             {
+                AuthenticationResult authenticationResult;
+                var member = await _memberContext.Members.FirstOrDefaultAsync(m => m.EmailAddress == emailAddress);
+
+                if (member is null || !member.IsEnabled)
+                {
+                    return AuthenticationResult.CreateFailedResult();
+                }
+
+                var result = _passwordService.Verify(password, member.PasswordHash);
+
+                switch (result.Outcome)
+                {
+                    case VerificationOutcome.Success:
+                        member.RegisterSuccessfulLogin();
+                        authenticationResult = AuthenticationResult.CreateSuccessResult(member);
+                        break;
+                    case VerificationOutcome.Failure:
+                    default:
+                        member.RegisterFailedLogin();
+                        authenticationResult = AuthenticationResult.CreateFailedResult();
+                        break;
+                }
+
+                AddClaims(authenticationResult, member);
+                await _memberContext.SaveChangesAsync();
+                return authenticationResult;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error authenticating Member for email address {EmailAddress}", emailAddress);
                 return AuthenticationResult.CreateFailedResult();
             }
-
-            var result = _passwordService.Verify(password, member.PasswordHash);
-
-            switch (result.Outcome)
-            {
-                case VerificationOutcome.Success:
-                    member.RegisterSuccessfulLogin();
-                    authenticationResult = AuthenticationResult.CreateSuccessResult(member);
-                    break;
-                case VerificationOutcome.Failure:
-                default:
-                    member.RegisterFailedLogin();
-                    authenticationResult = AuthenticationResult.CreateFailedResult();
-                    break;
-            }
-
-            AddClaims(authenticationResult, member);
-            await _memberContext.SaveChangesAsync();
-            return authenticationResult;
         }
 
         /// <summary>

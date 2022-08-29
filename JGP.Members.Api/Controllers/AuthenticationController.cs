@@ -19,7 +19,6 @@ using Core.Security;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
-using Web.Models;
 
 /// <summary>
 ///     Class AuthenticationController.
